@@ -1,0 +1,28 @@
+﻿@using QuickBootstrap.Extendsions
+@using QuickBootstrap.Services.Util
+@{
+    var paging = Model as Paged;
+    if (paging != null && paging.SizeCount > 0)
+    {
+        //得到现有query参数
+        var queryString = string.Empty;
+        for (var i = 0; i < Request.QueryString.AllKeys.Length; i++)
+        {
+            var currentKey = Request.QueryString.AllKeys[i] ?? string.Empty;
+            currentKey = currentKey.ToLower();
+            if (currentKey != "pageindex" && currentKey != "pagesize" && currentKey.Length > 0)
+            {
+                queryString += string.Format("{0}={1}&", currentKey, Request.QueryString[currentKey]);
+            }
+        }
+
+        @Html.Paging(paging.PageIndex, paging.PageSize, paging.SizeCount, queryString)
+    }
+
+    if (paging != null && paging.SizeCount <= 0)
+    {
+        <div class="alert alert-info">
+            <strong>提示</strong> 没有查询到记录。
+        </div>
+    }
+}
