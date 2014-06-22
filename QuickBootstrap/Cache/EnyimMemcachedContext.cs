@@ -18,7 +18,7 @@ namespace QuickBootstrap.Cache
 {
     public sealed class EnyimMemcachedContext : CacheContext
     {
-        private readonly MemcachedClient _memcachedClient = new MemcachedClient("mfniu.com/memcached");
+        private readonly MemcachedClient _memcachedClient = new MemcachedClient("QuickBootstrap/memcached");
 
         public override void Init() { }
 
