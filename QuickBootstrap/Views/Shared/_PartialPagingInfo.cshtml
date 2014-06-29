@@ -19,7 +19,7 @@
         @Html.Paging(paging.PageIndex, paging.PageSize, paging.SizeCount, queryString)
     }
 
-    if (paging != null && paging.SizeCount <= 0)
+    if (paging == null || paging.SizeCount <= 0)
     {
         <div class="alert alert-info">
             <strong>提示</strong> 没有查询到记录。

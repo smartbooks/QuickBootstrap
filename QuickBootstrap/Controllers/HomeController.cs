@@ -22,7 +22,7 @@ namespace QuickBootstrap.Controllers
 
         #region index method
 
-        //[UserAuthorization]
+        [UserAuthorization]
         public ActionResult Index()
         {
             return View();

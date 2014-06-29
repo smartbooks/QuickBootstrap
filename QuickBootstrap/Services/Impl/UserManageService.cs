@@ -24,6 +24,9 @@ namespace QuickBootstrap.Services.Impl
         {
             var result = new PagedResult<User>
             {
+                PageIndex = 0,
+                PageSize = 10000,
+                SizeCount = DbContext.User.Count(),
                 Result = DbContext.User.OrderByDescending(p => p.CreateTime).ToList()
             };
 

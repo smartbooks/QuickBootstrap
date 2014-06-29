@@ -12,11 +12,17 @@ namespace QuickBootstrap
     {
         protected void Application_Start()
         {
+            AppDomain.CurrentDomain.FirstChanceException += (sender, args) =>
+            {
+                var log = LogManager.GetLogger(typeof(MvcApplication));
+                log.Error(args);
+            };
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
+
             InitDataBase();
         }
 
