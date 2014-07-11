@@ -1,1 +1,4 @@
 /packages
+/*.suo
+/QuickBootstrap/Properties/PublishProfiles/*.pubxml
+/QuickBootstrap/Properties/PublishProfiles/*.user
