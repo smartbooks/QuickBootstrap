@@ -1,4 +1,5 @@
 ﻿@using QuickBootstrap.Filters
+@using QuickBootstrap.Services.Models
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,8 @@
 <body>
 
     <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -26,6 +28,7 @@
                 </button>
                 <a href="/" class="navbar-brand">管理后台</a>
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
@@ -36,12 +39,36 @@
                         //其他功能菜单
 
                         <li><a href="/UserManage">用户管理</a></li>
+
+                        if (TempData["UserPermissions"] != null)
+                        {
+                            var userRoleMenuItem = TempData["UserPermissions"] as List<UserRoleMenuItem>;
+                            if (userRoleMenuItem != null)
+                            {
+                                var menuGroup = userRoleMenuItem.GroupBy(p => p.GroupTitle);
+                                foreach (var groupItem in menuGroup)
+                                {
+                                    <li class="dropdown active">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            @groupItem.Key
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var m in groupItem)
+                                            {
+                                                <li><a href="@m.Path">@m.Title</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                        }
                     }
 
                 </ul>
 
                 @if (Request.Cookies[UserAuthorizationAttribute.CookieUserName] != null &&
-                    !string.IsNullOrWhiteSpace(Request.Cookies[UserAuthorizationAttribute.CookieUserName].Value))
+                     !string.IsNullOrWhiteSpace(Request.Cookies[UserAuthorizationAttribute.CookieUserName].Value))
                 {
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -55,7 +82,7 @@
         </div>
     </div>
 
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         <div style="min-height:650px;">
             @RenderBody()
         </div>

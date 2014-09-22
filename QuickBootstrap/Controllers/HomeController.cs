@@ -9,6 +9,7 @@ using QuickBootstrap.Helpers;
 using QuickBootstrap.Models;
 using QuickBootstrap.Services;
 using Microsoft.Practices.Unity;
+using QuickBootstrap.Sessions;
 
 namespace QuickBootstrap.Controllers
 {
@@ -45,7 +46,19 @@ namespace QuickBootstrap.Controllers
 
             if (_manageService.Login(model.UserName, model.Password.ToMd5()))
             {
-                Response.Cookies.Add(new HttpCookie(UserAuthorizationAttribute.CookieUserName, model.UserName));
+                var userCookie = new HttpCookie(UserAuthorizationAttribute.CookieUserName, model.UserName);
+
+                Response.Cookies.Add(userCookie);
+
+                Session[Session.SessionID] = new UserSession
+                {
+                    UserName = model.UserName,
+                    UserNick = "",
+                    LoginIpAddress = Request.UserHostAddress,
+                    LoginDateTime = DateTime.Now,
+                    DepartmentId = 0
+                };
+
                 return RedirectToAction("Index");
             }
 

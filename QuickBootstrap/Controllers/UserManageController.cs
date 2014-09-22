@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using QuickBootstrap.Entities;
@@ -10,11 +7,12 @@ using QuickBootstrap.Filters;
 using QuickBootstrap.Helpers;
 using QuickBootstrap.Models;
 using QuickBootstrap.Services;
+using QuickBootstrap.Util;
 
 namespace QuickBootstrap.Controllers
 {
     [UserAuthorization]
-    public class UserManageController : Controller
+    public class UserManageController : UserPermissionsController
     {
         #region 私有字段
 

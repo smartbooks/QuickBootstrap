@@ -6,7 +6,7 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-image: url(/Content/img/page-bg-black.png);
+    /*background-image: url(/Content/img/page-bg-black.png);*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -46,9 +46,7 @@ input[type="checkbox"].input-validation-error {
 
 .footer {
     text-align: center;
-    margin-top: 40px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
 }
 
 /*标注样式*/

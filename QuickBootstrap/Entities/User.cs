@@ -5,6 +5,9 @@ using QuickBootstrap.Attributes;
 
 namespace QuickBootstrap.Entities
 {
+    /// <summary>
+    /// 用户表
+    /// </summary>
     public class User
     {
         [Key]
@@ -33,5 +36,9 @@ namespace QuickBootstrap.Entities
         [Required]
         [BootstrapHidden]
         public DateTime CreateTime { get; set; }
+
+        [Required]
+        [DisplayName("所属部门")]
+        public int DepartmentId { get; set; }
     }
 }

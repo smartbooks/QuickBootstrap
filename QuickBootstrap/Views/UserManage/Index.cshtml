@@ -5,12 +5,12 @@
 
 <div class="row">
 
-    <div class="col-md-3">
+    <div class="col-md-2">
 
         @Html.Partial("Shared/_QuickMenu")
 
     </div>
-    <div class="col-md-9 ">
+    <div class="col-md-10 ">
 
         <ol class="breadcrumb">
             <li><a href="/">管理后台</a></li>
@@ -25,6 +25,7 @@
                     <th>序号</th>
                     <th>邮箱地址</th>
                     <th>真实姓名</th>
+                    <th>所属公司</th>
                     <th>创建时间</th>
                     <th>操作</th>
                 </tr>
@@ -37,6 +38,7 @@
                         <td>@Model.Result[i].UserName </td>
                         <td>@Model.Result[i].Nick </td>
                         <td>@Model.Result[i].CreateTime </td>
+                        <td>默认公司</td>
                         <td>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default">更多操作</button>
