@@ -32,7 +32,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
-                    @if (Request.Cookies[UserAuthorizationAttribute.CookieUserName] != null &&
+                    @if (Request.Cookies[UserAuthorizationAttribute.CookieUserName] != null && 
                          !string.IsNullOrWhiteSpace(Request.Cookies[UserAuthorizationAttribute.CookieUserName].Value))
                     {
 

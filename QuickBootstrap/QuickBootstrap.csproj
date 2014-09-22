@@ -203,7 +203,6 @@
     <Compile Include="Services\Util\Paging.cs" />
     <Compile Include="Services\Util\ServiceContext.cs" />
     <Compile Include="Sessions\UserSession.cs" />
-    <Compile Include="Util\UserPermissionsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\base.css" />

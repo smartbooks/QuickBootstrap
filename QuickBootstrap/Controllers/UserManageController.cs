@@ -7,12 +7,11 @@ using QuickBootstrap.Filters;
 using QuickBootstrap.Helpers;
 using QuickBootstrap.Models;
 using QuickBootstrap.Services;
-using QuickBootstrap.Util;
 
 namespace QuickBootstrap.Controllers
 {
     [UserAuthorization]
-    public class UserManageController : UserPermissionsController
+    public class UserManageController : Controller
     {
         #region 私有字段
 
