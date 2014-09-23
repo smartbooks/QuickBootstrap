@@ -2,3 +2,7 @@
 /*.suo
 /QuickBootstrap/Properties/PublishProfiles/*.pubxml
 /QuickBootstrap/Properties/PublishProfiles/*.user
+/QuickBootstrap/bin
+/QuickBootstrap/logs
+/QuickBootstrap/obj
+/QuickBootstrap/QuickBootstrap.csproj.user
