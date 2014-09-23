@@ -49,6 +49,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.121\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
@@ -163,6 +166,7 @@
     <Compile Include="Cache\EnyimMemcachedContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserManageController.cs" />
     <Compile Include="Entities\Department.cs" />
     <Compile Include="Entities\InitData.cs" />
@@ -170,9 +174,8 @@
     <Compile Include="Entities\MenuAction.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\DefaultDbContext.cs" />
-    <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Entities\Role.cs" />
-    <Compile Include="Entities\RoleMenuAction.cs" />
+    <Compile Include="Entities\RoleMenu.cs" />
     <Compile Include="Extendsions\ControllerExtendsions.cs" />
     <Compile Include="Extendsions\DateTimeExtendsions.cs" />
     <Compile Include="Extendsions\EntitieExtendsions.cs" />
@@ -186,6 +189,7 @@
     <Compile Include="Helpers\UnityHelper.cs" />
     <Compile Include="Models\HomeLoginRequest.cs" />
     <Compile Include="Models\ProfileChangePasswordRequest.cs" />
+    <Compile Include="Models\TestQueryRequest.cs" />
     <Compile Include="Models\UserCreateRequest.cs" />
     <Compile Include="Models\UserManageChangePassword.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,12 +201,15 @@
     <Compile Include="Services\IProfileService.cs" />
     <Compile Include="Services\IUserManageService.cs" />
     <Compile Include="Services\IUserPermissionsService.cs" />
+    <Compile Include="Services\Models\UserManagePageItem.cs" />
     <Compile Include="Services\Models\UserRoleMenuItem.cs" />
     <Compile Include="Services\Util\Paged.cs" />
     <Compile Include="Services\Util\PagedResult.cs" />
     <Compile Include="Services\Util\Paging.cs" />
     <Compile Include="Services\Util\ServiceContext.cs" />
     <Compile Include="Sessions\UserSession.cs" />
+    <Compile Include="Util\BasePermissionsModel.cs" />
+    <Compile Include="Util\PermissionsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\base.css" />
@@ -240,6 +247,10 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Test\Query.cshtml" />
+    <Content Include="Views\Test\Create.cshtml" />
+    <Content Include="Views\Test\Delete.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

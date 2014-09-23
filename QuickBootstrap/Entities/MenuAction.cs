@@ -12,6 +12,12 @@ namespace QuickBootstrap.Entities
         [Key]
         public int Id { get; set; }
 
+        /// <summary>
+        /// 菜单编号
+        /// </summary>
+        [Required]
+        public int MenuId { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Title { get; set; }

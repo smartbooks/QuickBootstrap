@@ -20,7 +20,7 @@ namespace QuickBootstrap.Services.Impl
     {
         public bool Login(string username, string password)
         {
-            return DbContext.User.FirstOrDefault(p => p.UserName == username && p.UserPwd == password) != null;
+            return DbContext.User.Count(p => p.UserName == username && p.UserPwd == password && p.IsEnable) > 0;
         }
 
         public void Logout(string username)

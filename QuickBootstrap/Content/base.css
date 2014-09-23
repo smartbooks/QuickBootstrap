@@ -58,13 +58,27 @@ input[type="checkbox"].input-validation-error {
     border-left: 3px solid #eee;
 }
 
-/*绿色*/
+.callout-primary {
+    background-color: #f5f5f5;
+    border-color: #428bca;
+}
+
+.callout-success {
+    background-color: #f5f5f5;
+    border-color: #d6e9c6;
+}
+
 .callout-info {
-    background-color: #f4f8fa;
+    background-color: #f5f5f5;
     border-color: #bce8f1;
 }
-/*粉红色*/
+
+.callout-warning {
+    background-color: #f5f5f5;
+    border-color: #ebccd1;
+}
+
 .callout-danger {
-    background-color: #fdf7f7;
+    background-color: #f5f5f5;
     border-color: #eed3d7;
 }

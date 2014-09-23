@@ -9,17 +9,16 @@ namespace QuickBootstrap.Services.Impl
     {
         public List<UserRoleMenuItem> GetUserRoleMenu(string username)
         {
-            var query = from r in DbContext.UserRole
-                        from p in DbContext.RoleMenuAction
+            var query = from u in DbContext.User
+                        from p in DbContext.RoleMenu
                         from m in DbContext.Menu
-                        where r.UserName == username && r.RoleId == p.RoleId && p.MenuId == m.Id
+                        where u.UserName == username && u.RoleId == p.RoleId && p.MenuId == m.Id
                         orderby m.Order descending
-                        group m by new { m.Title, m.GroupTitle, m.Path } into tempGroup
                         select new UserRoleMenuItem
                         {
-                            Title = tempGroup.Key.Title,
-                            GroupTitle = tempGroup.Key.GroupTitle,
-                            Path = tempGroup.Key.Path
+                            Title = m.Title,
+                            GroupTitle = m.GroupTitle,
+                            Path = m.Path
                         };
 
             return query.ToList();

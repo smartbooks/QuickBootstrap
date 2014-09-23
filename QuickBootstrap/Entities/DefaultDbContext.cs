@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace QuickBootstrap.Entities
 {
@@ -35,11 +36,14 @@ namespace QuickBootstrap.Entities
         /// <summary>
         /// 角色菜单动作表
         /// </summary>
-        public DbSet<RoleMenuAction> RoleMenuAction { get; set; }
+        public DbSet<RoleMenu> RoleMenu { get; set; }
 
-        /// <summary>
-        /// 用户角色表
-        /// </summary>
-        public DbSet<UserRole> UserRole { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //移除复数表名
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

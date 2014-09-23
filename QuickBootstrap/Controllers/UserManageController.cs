@@ -7,6 +7,7 @@ using QuickBootstrap.Filters;
 using QuickBootstrap.Helpers;
 using QuickBootstrap.Models;
 using QuickBootstrap.Services;
+using QuickBootstrap.Services.Util;
 
 namespace QuickBootstrap.Controllers
 {
@@ -21,9 +22,9 @@ namespace QuickBootstrap.Controllers
 
         #region action method
 
-        public ActionResult Index()
+        public ActionResult Index(int pageIndex = 0, int pageSize = 20)
         {
-            return View(_userManageService.GetAll());
+            return View(_userManageService.GetList(new Paging { PageIndex = pageIndex, PageSize = pageSize }));
         }
 
         public ActionResult Create()

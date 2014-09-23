@@ -40,5 +40,11 @@ namespace QuickBootstrap.Entities
         [Required]
         [DisplayName("所属部门")]
         public int DepartmentId { get; set; }
+
+        /// <summary>
+        /// 角色编号
+        /// </summary>
+        [Required]
+        public int RoleId { get; set; }
     }
 }

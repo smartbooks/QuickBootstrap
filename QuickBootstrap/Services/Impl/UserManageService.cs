@@ -13,24 +13,42 @@
 
 using System.Data.Entity;
 using System.Linq;
+using EntityFramework.Extensions;
 using QuickBootstrap.Entities;
+using QuickBootstrap.Services.Models;
 using QuickBootstrap.Services.Util;
 
 namespace QuickBootstrap.Services.Impl
 {
     public sealed class UserManageService : ServiceContext, IUserManageService
     {
-        public PagedResult<User> GetAll()
+        public PagedResult<UserManagePageItem> GetList(Paging paging)
         {
-            var result = new PagedResult<User>
+            var queryPageResult = new PagedResult<UserManagePageItem>
             {
-                PageIndex = 0,
-                PageSize = 10000,
-                SizeCount = DbContext.User.Count(),
-                Result = DbContext.User.OrderByDescending(p => p.CreateTime).ToList()
+                PageIndex = paging.PageIndex,
+                PageSize = paging.PageSize,
             };
 
-            return result;
+            var query = from user in DbContext.User
+                        from role in DbContext.Role
+                        from department in DbContext.Department
+                        where user.RoleId == role.Id && user.DepartmentId == department.Id
+                        orderby user.CreateTime descending
+                        select new UserManagePageItem
+                        {
+                            UserName = user.UserName,
+                            Nick = user.Nick,
+                            IsEnable = user.IsEnable,
+                            CreateTime = user.CreateTime,
+                            DepartmentTitle = department.Title,
+                            RoleTitle = role.Title
+                        };
+
+            queryPageResult.SizeCount = query.Count();
+            queryPageResult.Result = query.Skip(paging.PageIndex * paging.PageSize).Take(paging.PageSize).ToList();
+
+            return queryPageResult;
         }
 
         public bool Create(User model)
@@ -57,13 +75,7 @@ namespace QuickBootstrap.Services.Impl
 
         public bool Delete(string username)
         {
-            var model = Get(username);
-            if (model != null)
-            {
-                DbContext.Entry(model).State = EntityState.Deleted;
-                return DbContext.SaveChanges() > 0;
-            }
-            return false;
+            return DbContext.User.Delete(p => p.UserName == username) > 0;
         }
     }
 }

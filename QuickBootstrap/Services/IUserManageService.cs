@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using QuickBootstrap.Entities;
+using QuickBootstrap.Services.Models;
 using QuickBootstrap.Services.Util;
 
 namespace QuickBootstrap.Services
 {
     public interface IUserManageService
     {
-        PagedResult<User> GetAll();
+        PagedResult<UserManagePageItem> GetList(Paging paging);
 
         User Get(string username = "");
 
