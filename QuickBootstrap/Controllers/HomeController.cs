@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using QuickBootstrap.Extendsions;
 using QuickBootstrap.Filters;
-using QuickBootstrap.Helpers;
 using QuickBootstrap.Models;
 using QuickBootstrap.Services;
-using Microsoft.Practices.Unity;
+using QuickBootstrap.Services.Impl;
 using QuickBootstrap.Sessions;
 
 namespace QuickBootstrap.Controllers
@@ -17,7 +14,7 @@ namespace QuickBootstrap.Controllers
     {
         #region 私有字段
 
-        private readonly IManageService _manageService = UnityHelper.Instance.Unity.Resolve<IManageService>();
+        private readonly IManageService _manageService = new ManageService();
 
         #endregion
 
@@ -44,20 +41,15 @@ namespace QuickBootstrap.Controllers
         {
             model.Trim();
 
-            if (_manageService.Login(model.UserName, model.Password.ToMd5()))
+            var loginUserSession = _manageService.GetUserSession(model.UserName, model.Password.ToMd5(), Request.UserHostAddress);
+
+            if (loginUserSession != null)
             {
+                Session[Session.SessionID] = loginUserSession;
+
                 var userCookie = new HttpCookie(UserAuthorizationAttribute.CookieUserName, model.UserName);
 
                 Response.Cookies.Add(userCookie);
-
-                Session[Session.SessionID] = new UserSession
-                {
-                    UserName = model.UserName,
-                    UserNick = "",
-                    LoginIpAddress = Request.UserHostAddress,
-                    LoginDateTime = DateTime.Now,
-                    DepartmentId = 0
-                };
 
                 return RedirectToAction("Index");
             }
@@ -78,7 +70,9 @@ namespace QuickBootstrap.Controllers
                 !string.IsNullOrWhiteSpace(Request.Cookies[UserAuthorizationAttribute.CookieUserName].Value))
             {
                 //退出登录日志记录操作
-                _manageService.Logout(Request.Cookies[UserAuthorizationAttribute.CookieUserName].Value);
+                _manageService.LoginOut(Request.Cookies[UserAuthorizationAttribute.CookieUserName].Value, Request.UserHostAddress);
+
+                Session[Session.SessionID] = null;
 
                 Response.Cookies.Add(new HttpCookie(UserAuthorizationAttribute.CookieUserName, string.Empty));
             }

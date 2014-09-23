@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace QuickBootstrap.Sessions
 {
@@ -15,5 +14,7 @@ namespace QuickBootstrap.Sessions
         public DateTime LoginDateTime { get; set; }
 
         public int DepartmentId { get; set; }
+
+        public int RoleId { get; set; }
     }
 }

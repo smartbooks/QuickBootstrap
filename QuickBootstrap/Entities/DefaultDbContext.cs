@@ -38,6 +38,11 @@ namespace QuickBootstrap.Entities
         /// </summary>
         public DbSet<RoleMenu> RoleMenu { get; set; }
 
+        /// <summary>
+        /// 用户登录历史表
+        /// </summary>
+        public DbSet<UserLoginHistory> UserLoginHistory { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //移除复数表名

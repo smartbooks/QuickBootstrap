@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Web.Mvc;
-using Microsoft.Practices.Unity;
 using QuickBootstrap.Entities;
 using QuickBootstrap.Extendsions;
 using QuickBootstrap.Filters;
-using QuickBootstrap.Helpers;
 using QuickBootstrap.Models;
 using QuickBootstrap.Services;
+using QuickBootstrap.Services.Impl;
 using QuickBootstrap.Services.Util;
 
 namespace QuickBootstrap.Controllers
@@ -16,7 +15,9 @@ namespace QuickBootstrap.Controllers
     {
         #region 私有字段
 
-        private readonly IUserManageService _userManageService = UnityHelper.Instance.Unity.Resolve<IUserManageService>();
+        private readonly IUserManageService _userManageService = new UserManageService();
+        private readonly IDepartmentService _departmentService = new DepartmentService();
+        private readonly IRoleService _roleService = new RoleService();
 
         #endregion
 
@@ -24,18 +25,29 @@ namespace QuickBootstrap.Controllers
 
         public ActionResult Index(int pageIndex = 0, int pageSize = 20)
         {
-            return View(_userManageService.GetList(new Paging { PageIndex = pageIndex, PageSize = pageSize }));
+            var paging = new Paging { PageIndex = pageIndex, PageSize = pageSize };
+            return View(_userManageService.GetList(paging));
         }
 
         public ActionResult Create()
         {
-            return View();
+            BindSelectListDataSource();
+
+            var viewModel = new UserCreateRequest();
+
+            return View(viewModel);
         }
 
         [HttpPost]
-        [ValidateModelState]
         public ActionResult Create(UserCreateRequest model)
         {
+            if (ModelState.IsValid == false)
+            {
+                BindSelectListDataSource();
+
+                return View(model);
+            }
+
             var userPwdHash = model.Password.ToMd5();
 
             if (!_userManageService.ExistsUser(model.UserName))
@@ -64,6 +76,16 @@ namespace QuickBootstrap.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        #endregion
+
+        #region 私有方法
+
+        private void BindSelectListDataSource()
+        {
+            ViewBag.RoleList = new SelectList(_roleService.GetAllList(), "ID", "Title");
+            ViewBag.DepartmentList = new SelectList(_departmentService.GetAllList(), "ID", "Title");
         }
 
         #endregion

@@ -18,6 +18,7 @@ namespace QuickBootstrap.Entities
                 UserName="mr.wangya@qq.com", 
                 UserPwd= "670b14728ad9902aecba32e22fa4f6bd", 
                 CreateTime = DateTime.Now, 
+                IsEnable = true,
                 Nick = "王亚", 
                 DepartmentId = 1,
                 RoleId = 1}
@@ -54,7 +55,7 @@ namespace QuickBootstrap.Entities
             //角色菜单
             new List<RoleMenu>
             {
-                new RoleMenu{MenuId = 1, RoleId = 1}
+                new RoleMenu{MenuId = 1, RoleId = 1, CreateTime = DateTime.Now}
             }.ForEach(m => context.RoleMenu.Add(m));
         }
     }

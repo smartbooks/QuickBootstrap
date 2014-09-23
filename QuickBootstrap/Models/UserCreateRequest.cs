@@ -28,5 +28,15 @@ namespace QuickBootstrap.Models
         [Required]
         [Display(Name = "真实姓名")]
         public string Nick { get; set; }
+
+        [Range(0, int.MaxValue)]
+        [Required]
+        [Display(Name = "所属部门")]
+        public int DepartmentId { get; set; }
+
+        [Range(0, int.MaxValue)]
+        [Required]
+        [Display(Name = "用户角色")]
+        public int RoleId { get; set; }
     }
 }

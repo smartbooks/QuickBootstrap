@@ -6,16 +6,17 @@
 <div class="row">
 
     <div class="col-md-2">
-
         @Html.Partial("Shared/_QuickMenu")
-
     </div>
+
     <div class="col-md-10 ">
 
         <ol class="breadcrumb">
             <li><a href="/">管理后台</a></li>
-            <li><a href="/UserManage">用户</a></li>
-            <li class="active">查看用户</li>
+            <li><a href="/UserManage">用户管理</a></li>
+            <li class="active">
+                <label class="label label-success">共查询到 @Model.SizeCount 条信息</label>
+            </li>
         </ol>
 
         <form action="/Test/Query" method="POST">
@@ -57,7 +58,7 @@
                     <th>邮箱地址</th>
                     <th>真实姓名</th>
                     <th>用户角色</th>
-                    <th>所属公司</th>
+                    <th>所属部门</th>
                     <th>账号状态</th>
                     <th>创建时间</th>
                     <th>操作</th>

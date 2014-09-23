@@ -1,9 +1,11 @@
-﻿namespace QuickBootstrap.Services
+﻿using QuickBootstrap.Sessions;
+
+namespace QuickBootstrap.Services
 {
     public interface IManageService
     {
-        bool Login(string username, string password);
+        void LoginOut(string username, string ipAddress);
 
-        void Logout(string username);
+        UserSession GetUserSession(string username, string password, string ipAddress);
     }
 }

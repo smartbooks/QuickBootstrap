@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace QuickBootstrap.Entities
 {
@@ -15,5 +16,8 @@ namespace QuickBootstrap.Entities
 
         [Required]
         public int MenuId { get; set; }
+
+        [Required]
+        public DateTime CreateTime { get; set; }
     }
 }

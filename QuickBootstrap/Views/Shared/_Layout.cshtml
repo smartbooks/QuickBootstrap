@@ -32,43 +32,50 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
-                    @if (Request.Cookies[UserAuthorizationAttribute.CookieUserName] != null && 
-                         !string.IsNullOrWhiteSpace(Request.Cookies[UserAuthorizationAttribute.CookieUserName].Value))
+                    @if (Request.Cookies[UserAuthorizationAttribute.CookieUserName] != null &&
+                         string.IsNullOrWhiteSpace(Request.Cookies[UserAuthorizationAttribute.CookieUserName].Value) == false &&
+                        Session[Session.SessionID] != null)
                     {
 
                         //其他功能菜单
 
+                        <li><a href="/UserLoginHistory">登录日志</a></li>
                         <li><a href="/UserManage">用户管理</a></li>
+                        <li><a href="/RoleMenuManage">角色菜单</a></li>
+                        <li><a href="/MenuManage">菜单管理</a></li>
+                        <li><a href="/RoleManage">角色管理</a></li>
+                        <li><a href="/DepartmentManage">部门管理</a></li>
 
-                        if (TempData["UserPermissions"] != null)
-                        {
-                            var userRoleMenuItem = TempData["UserPermissions"] as List<UserRoleMenuItem>;
-                            if (userRoleMenuItem != null)
+                        @*if (TempData["UserPermissions"] != null)
                             {
-                                var menuGroup = userRoleMenuItem.GroupBy(p => p.GroupTitle);
-                                foreach (var groupItem in menuGroup)
+                                var userRoleMenuItem = TempData["UserPermissions"] as List<UserRoleMenuItem>;
+                                if (userRoleMenuItem != null)
                                 {
-                                    <li class="dropdown active">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            @groupItem.Key
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            @foreach (var m in groupItem)
-                                            {
-                                                <li><a href="@m.Path">@m.Title</a></li>
-                                            }
-                                        </ul>
-                                    </li>
+                                    var menuGroup = userRoleMenuItem.GroupBy(p => p.GroupTitle);
+                                    foreach (var groupItem in menuGroup)
+                                    {
+                                        <li class="dropdown active">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                @groupItem.Key
+                                                <b class="caret"></b>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                @foreach (var m in groupItem)
+                                                {
+                                                    <li><a href="@m.Path">@m.Title</a></li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
                                 }
-                            }
-                        }
+                            }*@
                     }
 
                 </ul>
 
                 @if (Request.Cookies[UserAuthorizationAttribute.CookieUserName] != null &&
-                     !string.IsNullOrWhiteSpace(Request.Cookies[UserAuthorizationAttribute.CookieUserName].Value))
+                     string.IsNullOrWhiteSpace(Request.Cookies[UserAuthorizationAttribute.CookieUserName].Value) ==false &&
+                    Session[Session.SessionID] != null)
                 {
                     <ul class="nav navbar-nav navbar-right">
                         <li>

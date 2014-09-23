@@ -1,0 +1,59 @@
+﻿@model QuickBootstrap.Services.Util.PagedResult<QuickBootstrap.Services.Models.RoleMenuManagePageItem>
+@{
+    ViewBag.Title = "角色菜单";
+}
+
+
+<div class="row">
+
+    <div class="col-md-2">
+        @Html.Partial("Shared/_QuickMenu")
+    </div>
+
+    <div class="col-md-10 ">
+
+        <ol class="breadcrumb">
+            <li><a href="/">管理后台</a></li>
+            <li><a href="/RoleMenuManage">角色菜单</a></li>
+            <li class="active">
+                <label class="label label-success">共查询到 @Model.SizeCount 条信息</label>
+            </li>
+        </ol>
+
+        <div class="callout callout-primary">
+            <div class="btn-group">
+                <button type="submit" class="btn btn-default btn-group-lg" name="Event" value="Query">查询</button>
+            </div>
+        </div>
+
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>角色名称</th>
+                    <th>菜单名称</th>
+                    <th>菜单分组</th>
+                    <th>添加时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Result.Count; i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@Model.Result[i].RoleTitle</td>
+                        <td>@Model.Result[i].MenuTitle</td>
+                        <td>@Model.Result[i].MenuGroupTitle</td>
+                        <td>@Model.Result[i].CreateTime</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @Html.Partial("_PartialPagingInfo")
+
+    </div>
+</div>
+
+
+
