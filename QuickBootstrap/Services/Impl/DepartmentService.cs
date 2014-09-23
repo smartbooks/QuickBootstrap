@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using EntityFramework.Extensions;
 using QuickBootstrap.Entities;
 using QuickBootstrap.Services.Models;
 using QuickBootstrap.Services.Util;
@@ -38,6 +37,24 @@ namespace QuickBootstrap.Services.Impl
         public List<Department> GetAllList()
         {
             return DbContext.Department.OrderByDescending(p => p.CreateTime).ToList();
+        }
+
+        public void Create(Department model)
+        {
+            DbContext.Department.Add(model);
+            DbContext.SaveChanges();
+        }
+
+        public Department Get(int id)
+        {
+            return DbContext.Department.FirstOrDefault(p => p.Id == id);
+        }
+
+        public void Edit(Department model)
+        {
+            DbContext.Department.Update(
+                p => p.Id == model.Id,
+                m => new Department { Order = model.Order, IsEnable = model.IsEnable, Title = model.Title });
         }
     }
 }

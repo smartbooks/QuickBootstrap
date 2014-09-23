@@ -1,0 +1,69 @@
+﻿@model QuickBootstrap.Models.DepartmentManageEditRequest
+@{
+    ViewBag.Title = "编辑部门";
+}
+
+<div class="row">
+
+    <div class="col-md-2">
+        @Html.Partial("Shared/_QuickMenu")
+    </div>
+
+    <div class="col-md-10 ">
+
+        <ol class="breadcrumb">
+            <li><a href="/">管理后台</a></li>
+            <li><a href="/DepartmentManage">部门管理</a></li>
+            <li class="active">编辑部门</li>
+        </ol>
+
+        <div class="container">
+
+            @using (Html.BeginForm("Edit", "DepartmentManage", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Title, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control", style = "width: 280px" })
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.ValidationMessageFor(model => model.Id)
+                        @Html.ValidationMessageFor(model => model.Title)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Order, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Order, new { @class = "form-control", style = "width: 280px" })
+                        @Html.ValidationMessageFor(model => model.Order)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsEnable, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.IsEnable, new { @class = "form-control", style = "width: 280px" })
+                        @Html.ValidationMessageFor(model => model.IsEnable)
+                        <span>注：选中"启用"，不选中"不启用"。</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ValidationSummary(false)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                        <a href="/DepartmentManage" class="btn btn-default">取消</a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+

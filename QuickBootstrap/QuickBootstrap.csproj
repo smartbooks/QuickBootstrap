@@ -181,6 +181,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DepartmentManageCreateRequest.cs" />
+    <Compile Include="Models\DepartmentManageEditRequest.cs" />
     <Compile Include="Models\HomeLoginRequest.cs" />
     <Compile Include="Models\ProfileChangePasswordRequest.cs" />
     <Compile Include="Models\UserCreateRequest.cs" />
@@ -263,6 +265,8 @@
     <Content Include="Views\RoleManage\Shared\_QuickMenu.cshtml" />
     <Content Include="Views\MenuManage\Shared\_QuickMenu.cshtml" />
     <Content Include="Views\DepartmentManage\Shared\_QuickMenu.cshtml" />
+    <Content Include="Views\DepartmentManage\Create.cshtml" />
+    <Content Include="Views\DepartmentManage\Edit.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
