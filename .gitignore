@@ -6,3 +6,14 @@
 /QuickBootstrap/logs
 /QuickBootstrap/obj
 /QuickBootstrap/QuickBootstrap.csproj.user
+/QuickBootstrap/Content/bootstrap-theme.css
+/QuickBootstrap/Content/bootstrap-theme.css.map
+/QuickBootstrap/Content/bootstrap-theme.min.css
+/QuickBootstrap/Content/bootstrap.css.map
+/QuickBootstrap/Scripts/jquery-2.1.1.intellisense.js
+/QuickBootstrap/Scripts/jquery-2.1.1.js
+/QuickBootstrap/Scripts/jquery-2.1.1.min.js
+/QuickBootstrap/Scripts/jquery-2.1.1.min.map
+/QuickBootstrap/Scripts/modernizr-2.8.3.js
+/QuickBootstrap/Scripts/respond.matchmedia.addListener.js
+/QuickBootstrap/Scripts/respond.matchmedia.addListener.min.js

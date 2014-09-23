@@ -19,12 +19,12 @@
 
         <div class="container">
 
-            @using (Html.BeginForm("create", "UserManage", FormMethod.Post, new { @class = "form-horizontal" }))
+            @using (Html.BeginForm("Create", "UserManage", FormMethod.Post, new { @class = "form-horizontal" }))
             {
                 <div class="form-group">
                     @Html.LabelFor(model => model.UserName, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", style = "width: 280px", placeholder="邮箱地址" })
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", style = "width: 280px", placeholder = "邮箱地址" })
                         @Html.ValidationMessageFor(model => model.UserName)
                     </div>
                 </div>
@@ -62,8 +62,17 @@
                 </div>
 
                 <div class="form-group">
+                    @Html.LabelFor(model => model.IsEnable, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(model => model.IsEnable, new { @class = "form-control", style = "width: 280px" })
+                        @Html.ValidationMessageFor(model => model.IsEnable)
+                        <span>注：选中"启用"，不选中"禁止登陆"。</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        @Html.ValidationSummary(true)
+                        @Html.ValidationSummary(false)
                     </div>
                 </div>
 
@@ -78,4 +87,3 @@
         </div>
     </div>
 </div>
-

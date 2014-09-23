@@ -33,7 +33,7 @@ namespace QuickBootstrap.Controllers
         {
             BindSelectListDataSource();
 
-            var viewModel = new UserCreateRequest();
+            var viewModel = new UserCreateRequest {IsEnable = true};
 
             return View(viewModel);
         }
@@ -48,16 +48,17 @@ namespace QuickBootstrap.Controllers
                 return View(model);
             }
 
-            var userPwdHash = model.Password.ToMd5();
-
-            if (!_userManageService.ExistsUser(model.UserName))
+            if (_userManageService.ExistsUser(model.UserName) == false)
             {
                 _userManageService.Create(new User
                 {
                     UserName = model.UserName,
-                    UserPwd = userPwdHash,
+                    UserPwd = model.Password.ToMd5(),
                     Nick = model.Nick,
-                    CreateTime = DateTime.Now
+                    CreateTime = DateTime.Now,
+                    IsEnable = model.IsEnable,
+                    DepartmentId = model.DepartmentId,
+                    RoleId = model.RoleId
                 });
 
                 return RedirectToAction("Index");
@@ -65,7 +66,9 @@ namespace QuickBootstrap.Controllers
 
             ModelState.AddModelError("_error", "登录账号已存在");
 
-            return View();
+            BindSelectListDataSource();
+
+            return View(model);
         }
 
         public ActionResult Delete(string username = "")
@@ -84,8 +87,8 @@ namespace QuickBootstrap.Controllers
 
         private void BindSelectListDataSource()
         {
-            ViewBag.RoleList = new SelectList(_roleService.GetAllList(), "ID", "Title");
-            ViewBag.DepartmentList = new SelectList(_departmentService.GetAllList(), "ID", "Title");
+            ViewBag.RoleList = new SelectList(_roleService.GetAllList(), "Id", "Title");
+            ViewBag.DepartmentList = new SelectList(_departmentService.GetAllList(), "Id", "Title");
         }
 
         #endregion

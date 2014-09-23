@@ -38,5 +38,9 @@ namespace QuickBootstrap.Models
         [Required]
         [Display(Name = "用户角色")]
         public int RoleId { get; set; }
+
+        [Required]
+        [Display(Name = "账号状态")]
+        public bool IsEnable { get; set; }
     }
 }
