@@ -6,3 +6,6 @@ QuickBootstrap
 
 QuickBootstrap开源项目交流群开通啦： 
 QQ群号：229853793(QuickBootstrap)
+
+
+文章介绍：http://www.cnblogs.com/smartbooks/p/3814927.html
