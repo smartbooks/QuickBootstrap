@@ -1,17 +1,4 @@
-﻿// 
-// Copyright (c) 2014,SmartBooks
-// All rights reserved.
-// 
-// 文件名称：ControllerExtendsions.cs
-// 项目名称：WY.DC
-// 摘      要：简要描述本文件的内容
-// 
-// 当前版本：1.0
-// 作      者：ya wang
-// 完成日期：2014年05月05日
-// 
-
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using QuickBootstrap.Filters;
 
 namespace QuickBootstrap.Extendsions

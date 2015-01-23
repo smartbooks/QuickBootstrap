@@ -26,13 +26,13 @@ namespace QuickBootstrap.Controllers
 
         public ActionResult Create()
         {
-
+            return new EmptyResult();
         }
 
         [HttpPost]
         public ActionResult Edit()
         {
-
+            return new EmptyResult();
         }
     }
 }

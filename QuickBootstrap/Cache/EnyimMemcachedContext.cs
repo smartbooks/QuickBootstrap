@@ -1,24 +1,11 @@
-﻿// 
-// Copyright (c) 2014,SmartBooks
-// All rights reserved.
-// 
-// 文件名称：EnyimMemcachedContext.cs
-// 项目名称：WY.DC.Cache
-// 摘      要：简要描述本文件的内容
-// 
-// 当前版本：1.0
-// 作      者：ya wang
-// 完成日期：2014年04月30日
-// 
-
-using Enyim.Caching;
+﻿using Enyim.Caching;
 using Enyim.Caching.Memcached;
 
 namespace QuickBootstrap.Cache
 {
     public sealed class EnyimMemcachedContext : CacheContext
     {
-        private readonly MemcachedClient _memcachedClient = new MemcachedClient("QuickBootstrap/memcached");
+        private readonly MemcachedClient _memcachedClient = new MemcachedClient("SmartBooks/memcached");
 
         public override void Init() { }
 

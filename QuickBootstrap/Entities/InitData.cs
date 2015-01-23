@@ -19,7 +19,7 @@ namespace QuickBootstrap.Entities
                 UserPwd= "670b14728ad9902aecba32e22fa4f6bd", 
                 CreateTime = DateTime.Now, 
                 IsEnable = true,
-                Nick = "王亚", 
+                Nick = "SmartBooks", 
                 DepartmentId = 1,
                 RoleId = 1}
             }.ForEach(m => context.User.Add(m));

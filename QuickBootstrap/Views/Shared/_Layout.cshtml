@@ -1,5 +1,4 @@
 ﻿@using QuickBootstrap.Filters
-@using QuickBootstrap.Services.Models
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,37 +37,13 @@
                     {
 
                         //其他功能菜单
-
-                        <li><a href="/UserLoginHistory">登录日志</a></li>
+                        
                         <li><a href="/UserManage">用户管理</a></li>
                         <li><a href="/RoleMenuManage">角色菜单</a></li>
                         <li><a href="/MenuManage">菜单管理</a></li>
                         <li><a href="/RoleManage">角色管理</a></li>
                         <li><a href="/DepartmentManage">部门管理</a></li>
-
-                        @*if (TempData["UserPermissions"] != null)
-                        {
-                            var userRoleMenuItem = TempData["UserPermissions"] as List<UserRoleMenuItem>;
-                            if (userRoleMenuItem != null)
-                            {
-                                var menuGroup = userRoleMenuItem.GroupBy(p => p.GroupTitle);
-                                foreach (var groupItem in menuGroup)
-                                {
-                                    <li class="dropdown active">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            @groupItem.Key
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            @foreach (var m in groupItem)
-                                            {
-                                                <li><a href="@m.Path">@m.Title</a></li>
-                                            }
-                                        </ul>
-                                    </li>
-                                }
-                            }
-                        }*@
+                        <li><a href="/UserLoginHistory">登录日志</a></li>
                     }
 
                 </ul>

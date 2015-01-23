@@ -75,6 +75,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="StackExchange.Redis">
+      <HintPath>..\packages\StackExchange.Redis.1.0.394\lib\net45\StackExchange.Redis.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -138,22 +141,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Attributes\BootstrapCheckBoxAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Attributes\BootstrapHiddenAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Attributes\BootstrapInputAttribute.cs" />
-    <Compile Include="Attributes\BootstrapPasswordAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Attributes\BootstrapRadioButtonAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Attributes\BootstrapTextBoxAttribute.cs" />
     <Compile Include="Cache\CacheContext.cs" />
     <Compile Include="Cache\EnyimMemcachedContext.cs" />
+    <Compile Include="Cache\Extendsions\StackExchangeRedisExtensions.cs" />
+    <Compile Include="Cache\RedisContext.cs" />
     <Compile Include="Controllers\DepartmentManageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuManageController.cs" />
@@ -171,11 +162,17 @@
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\RoleMenu.cs" />
     <Compile Include="Entities\UserLoginHistory.cs" />
+    <Compile Include="Extendsions\ByteExtendsions.cs" />
     <Compile Include="Extendsions\ControllerExtendsions.cs" />
     <Compile Include="Extendsions\DateTimeExtendsions.cs" />
-    <Compile Include="Extendsions\EntitieExtendsions.cs" />
+    <Compile Include="Extendsions\ImageExtendsions.cs" />
+    <Compile Include="Extendsions\IO\StreamExtensions.cs" />
+    <Compile Include="Extendsions\Linq\ParameterRebinder.cs" />
+    <Compile Include="Extendsions\Linq\PredicateBuilder.cs" />
+    <Compile Include="Extendsions\ObjectExtendsions.cs" />
     <Compile Include="Extendsions\PagingExtendsions.cs" />
     <Compile Include="Extendsions\StringExtendsions.cs" />
+    <Compile Include="Extendsions\Web\HttpResponseExtendsions.cs" />
     <Compile Include="Filters\UserAuthorizationAttribute.cs" />
     <Compile Include="Filters\ValidateModelStateAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -217,6 +214,7 @@
     <Compile Include="Services\Util\PagedResult.cs" />
     <Compile Include="Services\Util\Paging.cs" />
     <Compile Include="Services\Util\ServiceContext.cs" />
+    <Compile Include="Services\Util\ValidateCodeHelper.cs" />
     <Compile Include="Sessions\UserSession.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -267,15 +265,15 @@
     <Content Include="Views\DepartmentManage\Shared\_QuickMenu.cshtml" />
     <Content Include="Views\DepartmentManage\Create.cshtml" />
     <Content Include="Views\DepartmentManage\Edit.cshtml" />
-    <None Include="Web.config">
+    <Content Include="Web.config">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Web.Debug.config">
+    </Content>
+    <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
+    </Content>
+    <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
+    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -290,10 +288,6 @@
     <Content Include="Views\Profile\ChangePassword.cshtml" />
     <Content Include="Views\Profile\Shared\_QuickMenu.cshtml" />
     <Content Include="Views\Shared\_PartialPagingInfo.cshtml" />
-    <Content Include="web.config.install.xdt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Web.config.transform" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
