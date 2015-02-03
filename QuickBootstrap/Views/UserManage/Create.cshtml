@@ -46,22 +46,6 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DepartmentId, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.DepartmentId, ViewBag.DepartmentList as SelectList, "请选择所属部门", new { @class = "form-control", style = "width:280px;" })
-                        @Html.ValidationMessageFor(model => model.DepartmentId)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.RoleId, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.RoleId, ViewBag.RoleList as SelectList, "请选用户角色", new { @class = "form-control", style = "width:280px;" })
-                        @Html.ValidationMessageFor(model => model.RoleId)
-                    </div>
-                </div>
-
-                <div class="form-group">
                     @Html.LabelFor(model => model.IsEnable, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
                         @Html.CheckBoxFor(model => model.IsEnable, new { @class = "form-control", style = "width: 280px" })

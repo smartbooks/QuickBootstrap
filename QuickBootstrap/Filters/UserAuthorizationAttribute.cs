@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using QuickBootstrap.Services;
-using QuickBootstrap.Services.Impl;
 using QuickBootstrap.Sessions;
 
 namespace QuickBootstrap.Filters
@@ -10,8 +8,6 @@ namespace QuickBootstrap.Filters
     {
         public static readonly string CookieUserName = "username";
         public static readonly string ManageLoginUrl = "/home/login";
-
-        private readonly IUserPermissionsService _userPermissionsService = new UserPermissionsService();
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -41,7 +37,7 @@ namespace QuickBootstrap.Filters
                     else
                     {
                         //用户权限菜单
-                        filterContext.Controller.TempData["UserPermissions"] = _userPermissionsService.GetUserRoleMenu(cookieUserName);
+                        //filterContext.Controller.TempData["UserPermissions"] = null;
                     }
                 }
             }

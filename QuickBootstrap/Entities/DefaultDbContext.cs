@@ -13,36 +13,6 @@ namespace QuickBootstrap.Entities
         /// </summary>
         public DbSet<User> User { get; set; }
 
-        /// <summary>
-        /// 部门表
-        /// </summary>
-        public DbSet<Department> Department { get; set; }
-
-        /// <summary>
-        /// 菜单表
-        /// </summary>
-        public DbSet<Menu> Menu { get; set; }
-
-        /// <summary>
-        /// 菜单动作表
-        /// </summary>
-        public DbSet<MenuAction> MenuAction { get; set; }
-
-        /// <summary>
-        /// 角色表
-        /// </summary>
-        public DbSet<Role> Role { get; set; }
-
-        /// <summary>
-        /// 角色菜单动作表
-        /// </summary>
-        public DbSet<RoleMenu> RoleMenu { get; set; }
-
-        /// <summary>
-        /// 用户登录历史表
-        /// </summary>
-        public DbSet<UserLoginHistory> UserLoginHistory { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //移除复数表名

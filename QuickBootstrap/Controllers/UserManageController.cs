@@ -16,8 +16,6 @@ namespace QuickBootstrap.Controllers
         #region 私有字段
 
         private readonly IUserManageService _userManageService = new UserManageService();
-        private readonly IDepartmentService _departmentService = new DepartmentService();
-        private readonly IRoleService _roleService = new RoleService();
 
         #endregion
 
@@ -31,8 +29,6 @@ namespace QuickBootstrap.Controllers
 
         public ActionResult Create()
         {
-            BindSelectListDataSource();
-
             var viewModel = new UserCreateRequest {IsEnable = true};
 
             return View(viewModel);
@@ -43,8 +39,6 @@ namespace QuickBootstrap.Controllers
         {
             if (ModelState.IsValid == false)
             {
-                BindSelectListDataSource();
-
                 return View(model);
             }
 
@@ -56,17 +50,13 @@ namespace QuickBootstrap.Controllers
                     UserPwd = model.Password.ToMd5(),
                     Nick = model.Nick,
                     CreateTime = DateTime.Now,
-                    IsEnable = model.IsEnable,
-                    DepartmentId = model.DepartmentId,
-                    RoleId = model.RoleId
+                    IsEnable = model.IsEnable
                 });
 
                 return RedirectToAction("Index");
             }
 
             ModelState.AddModelError("_error", "登录账号已存在");
-
-            BindSelectListDataSource();
 
             return View(model);
         }
@@ -79,16 +69,6 @@ namespace QuickBootstrap.Controllers
             }
 
             return RedirectToAction("Index");
-        }
-
-        #endregion
-
-        #region 私有方法
-
-        private void BindSelectListDataSource()
-        {
-            ViewBag.RoleList = new SelectList(_roleService.GetAllList(), "Id", "Title");
-            ViewBag.DepartmentList = new SelectList(_departmentService.GetAllList(), "Id", "Title");
         }
 
         #endregion

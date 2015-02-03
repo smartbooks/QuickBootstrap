@@ -1,17 +1,4 @@
-﻿// 
-// Copyright (c) 2014,SmartBooks
-// All rights reserved.
-// 
-// 文件名称：UserManageService.cs
-// 项目名称：QuickBootstrap
-// 摘      要：简要描述本文件的内容
-// 
-// 当前版本：1.0
-// 作      者：ya wang
-// 完成日期：2014年05月14日
-// 
-
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using EntityFramework.Extensions;
 using QuickBootstrap.Entities;
@@ -31,9 +18,6 @@ namespace QuickBootstrap.Services.Impl
             };
 
             var query = from user in DbContext.User
-                        from role in DbContext.Role
-                        from department in DbContext.Department
-                        where user.RoleId == role.Id && user.DepartmentId == department.Id
                         orderby user.CreateTime descending
                         select new UserManagePageItem
                         {
@@ -41,8 +25,6 @@ namespace QuickBootstrap.Services.Impl
                             Nick = user.Nick,
                             IsEnable = user.IsEnable,
                             CreateTime = user.CreateTime,
-                            DepartmentTitle = department.Title,
-                            RoleTitle = role.Title
                         };
 
             queryPageResult.SizeCount = query.Count();

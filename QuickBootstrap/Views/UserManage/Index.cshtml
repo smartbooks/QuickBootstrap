@@ -57,8 +57,6 @@
                     <th>序号</th>
                     <th>邮箱地址</th>
                     <th>真实姓名</th>
-                    <th>用户角色</th>
-                    <th>所属部门</th>
                     <th>账号状态</th>
                     <th>创建时间</th>
                     <th>操作</th>
@@ -71,8 +69,6 @@
                         <td>@(i + 1)</td>
                         <td>@Model.Result[i].UserName </td>
                         <td>@Model.Result[i].Nick </td>
-                        <td>@Model.Result[i].RoleTitle</td>
-                        <td>@Model.Result[i].DepartmentTitle</td>
                         <td>@Html.Raw(Model.Result[i].IsEnable ? "正常" : "<span class='label label-danger'>禁用</span>")</td>
                         <td>@Model.Result[i].CreateTime </td>
                         <td>

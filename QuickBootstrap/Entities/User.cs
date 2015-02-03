@@ -30,15 +30,5 @@ namespace QuickBootstrap.Entities
 
         [Required]
         public DateTime CreateTime { get; set; }
-
-        [Required]
-        [DisplayName("所属部门")]
-        public int DepartmentId { get; set; }
-
-        /// <summary>
-        /// 角色编号
-        /// </summary>
-        [Required]
-        public int RoleId { get; set; }
     }
 }

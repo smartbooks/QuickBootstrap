@@ -1,17 +1,4 @@
-﻿// 
-// Copyright (c) 2014,SmartBooks
-// All rights reserved.
-// 
-// 文件名称：ProfileService.cs
-// 项目名称：QuickBootstrap
-// 摘      要：简要描述本文件的内容
-// 
-// 当前版本：1.0
-// 作      者：ya wang
-// 完成日期：2014年05月14日
-// 
-
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using QuickBootstrap.Entities;
 using QuickBootstrap.Services.Util;

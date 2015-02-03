@@ -1,12 +1,10 @@
-﻿using System;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using QuickBootstrap.Extendsions;
 using QuickBootstrap.Filters;
 using QuickBootstrap.Models;
 using QuickBootstrap.Services;
 using QuickBootstrap.Services.Impl;
-using QuickBootstrap.Sessions;
 
 namespace QuickBootstrap.Controllers
 {
